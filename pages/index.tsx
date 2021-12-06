@@ -41,14 +41,15 @@ const Home: NextPage = () => {
         <HeroText>
           <Hey>Hey,</Hey>
           <Tagline>
-            I'm Yarden, a mission-driven full stack developer with a passion for{" "}
-            <strong>pixel-perfect design</strong>, <strong>teamwork</strong>,
-            and <strong>bleeding edge technology</strong>.
+            I&apos;m Yarden, a mission-driven full stack developer with a
+            passion for <strong>pixel-perfect design</strong>,{" "}
+            <strong>teamwork</strong>, and{" "}
+            <strong>bleeding-edge technology</strong>.
             <br />
             <br />
-            I'm eating code for breakfast ever since I was a little kid. I love
-            to create stuff using <strong>React</strong>, <strong>Redux</strong>{" "}
-            and <strong>Node</strong>.
+            I&apos;m eating code for breakfast ever since I was a little kid. I
+            love to create stuff using <strong>React</strong>,{" "}
+            <strong>Redux</strong> and <strong>Node</strong>.
           </Tagline>
         </HeroText>
       </Hero>
