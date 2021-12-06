@@ -1,0 +1,8 @@
+html {
+  font-family: "Arial";
+  color: #212121;
+}
+
+::selection {
+  background: #ff87ca;
+}
