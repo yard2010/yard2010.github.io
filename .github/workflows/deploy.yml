@@ -23,8 +23,8 @@ jobs:
         run: yarn install --immutable
       - name: Build and export
         run: yarn export
-      # - name: Add .nojekyll file
-      # run: touch ./out/.nojekyll
+      - name: Add .nojekyll file
+        run: touch ./out/.nojekyll
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@4.1.7
         with:
