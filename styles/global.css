@@ -1,8 +1,43 @@
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;700&family=Yeseva+One&display=swap");
+
 html {
-  font-family: "Arial";
-  color: #212121;
+  font-family: "Ubuntu";
+  color: #fff;
+  font-size: 14px;
+  background-color: darkslategrey;
 }
 
 ::selection {
-  background: #ff87ca;
+  background: #000;
+}
+
+a {
+  font-weight: bold;
+  color: currentColor;
+  /* text-decoration-opacity: 0.5; */
+  text-decoration-thickness: 0.125em;
+  text-underline-offset: 1.5px;
+  text-decoration-line: underline;
+}
+
+a:hover {
+  color: #ffcf7d;
+}
+
+@media screen and (max-width: 600px) {
+  html {
+    font-size: 14px;
+  }
+}
+
+@media screen and (min-width: 600px) and (max-width: 1200px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  html {
+    font-size: 18px;
+  }
 }
