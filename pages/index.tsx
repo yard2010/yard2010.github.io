@@ -10,6 +10,8 @@ const Hero = styled.div({
   justifyContent: "center",
   fontSize: "1.4em",
   paddingTop: 64,
+  position: "relative",
+  zIndex: 12321,
 });
 
 const HeroText = styled.div({

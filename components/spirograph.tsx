@@ -9,7 +9,7 @@ function drawSpirograph(ctx: CanvasRenderingContext2D | null) {
   const R = 480;
   const k = 2 / 3 + Math.sqrt(2);
   const h = 0.75;
-  const tDelta = 1 / (Math.PI * 2) / 2;
+  const tDelta = 1 / (Math.PI * 2) / 4;
 
   let t = 0;
   let lastX: number | null = null;
@@ -20,14 +20,14 @@ function drawSpirograph(ctx: CanvasRenderingContext2D | null) {
     const x = (1 - k) * Math.cos(t) + h * k * Math.cos(((1 - k) / k) * t);
     const y = (1 - k) * Math.sin(t) - h * k * Math.sin(((1 - k) / k) * t);
 
-    const targetX = x * R + ctx.canvas.clientWidth / 2;
-    const targetY = y * R + ctx.canvas.clientHeight / 2;
+    const targetX = x * R + ctx.canvas.clientWidth / 2 - 300;
+    const targetY = y * R + ctx.canvas.clientHeight / 2 - 200;
 
     ctx.beginPath();
-    ctx.lineWidth = 10;
-    ctx.lineCap = "butt";
-    ctx.strokeStyle = "hotpink";
-    ctx.globalAlpha = 0.35;
+    ctx.lineWidth = 16;
+    ctx.lineCap = "round";
+    ctx.strokeStyle = "#ffcf7d";
+    // ctx.globalAlpha = 0.35;
 
     if (lastX === null || lastY === null) {
       lastX = targetX;
@@ -40,6 +40,12 @@ function drawSpirograph(ctx: CanvasRenderingContext2D | null) {
 
     lastX = targetX;
     lastY = targetY;
+
+    ctx.globalCompositeOperation = "destination-out";
+    ctx.globalAlpha = 0.01;
+    ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+    ctx.globalCompositeOperation = "source-over";
+    ctx.globalAlpha = 1;
 
     requestAnimationFrame(drawFrame);
   };
