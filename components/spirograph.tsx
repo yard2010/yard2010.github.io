@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
 import { useEffect, useRef } from "react";
+import { useWindowSize } from "../hooks/useWindowSize";
 
 function drawSpirograph(ctx: CanvasRenderingContext2D | null) {
   if (!ctx) {
@@ -64,6 +65,21 @@ const Canvas = styled.canvas({
 
 const Spirograph = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+
+  const windowSize = useWindowSize();
+
+  useEffect(() => {
+    if (windowSize.height === undefined || windowSize.width === undefined) {
+      return;
+    }
+    setTimeout(() => {
+      const canvasWidth = canvasRef.current?.width || 0;
+      const canvasHeight = canvasRef.current?.height || 0;
+      canvasRef.current
+        ?.getContext("2d")
+        ?.clearRect(0, 0, canvasWidth, canvasHeight);
+    }, 250);
+  }, [windowSize]);
 
   useEffect(() => {
     if (canvasRef.current !== null) {

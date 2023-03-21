@@ -72,8 +72,8 @@ const Home: NextPage = () => {
         <HeroText>
           <HeadContainer>Yarden Refaeli</HeadContainer>
           <Tagline>
-            I&apos;m eating code for breakfast ever since I was a little kid. I
-            love to create stuff using <strong>React</strong>,{" "}
+            I&apos;ve been eating code for breakfast ever since I was a little
+            kid. I love to create stuff using <strong>React</strong>,{" "}
             <strong>Redux</strong> and <strong>Node</strong>.
             <br />
             <br />
