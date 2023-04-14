@@ -1,13 +1,17 @@
 import styled from "@emotion/styled";
-import { useEffect, useRef } from "react";
+import { useCallback, useEffect, useRef } from "react";
 import { useWindowSize } from "../hooks/useWindowSize";
+
+const randomInRange = (low: number, high: number) => {
+  return Math.floor(Math.random() * (high - low) + low);
+};
 
 function drawSpirograph(ctx: CanvasRenderingContext2D | null) {
   if (!ctx) {
     return;
   }
 
-  const R = 480;
+  const R = randomInRange(320, 640);
   const k = 2 / 3 + Math.sqrt(2);
   const h = 0.75;
   const tDelta = 1 / (Math.PI * 2) / 4;
@@ -21,14 +25,13 @@ function drawSpirograph(ctx: CanvasRenderingContext2D | null) {
     const x = (1 - k) * Math.cos(t) + h * k * Math.cos(((1 - k) / k) * t);
     const y = (1 - k) * Math.sin(t) - h * k * Math.sin(((1 - k) / k) * t);
 
-    const targetX = x * R + ctx.canvas.clientWidth / 2 - 300;
-    const targetY = y * R + ctx.canvas.clientHeight / 2 - 200;
+    const targetX = x * R + ctx.canvas.width / 2 - 100;
+    const targetY = y * R + ctx.canvas.height / 2 - 200;
 
     ctx.beginPath();
     ctx.lineWidth = 16;
     ctx.lineCap = "round";
     ctx.strokeStyle = "#ffcf7d";
-    // ctx.globalAlpha = 0.35;
 
     if (lastX === null || lastY === null) {
       lastX = targetX;
@@ -65,27 +68,43 @@ const Canvas = styled.canvas({
 
 const Spirograph = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const isDrawing = useRef(false);
 
   const windowSize = useWindowSize();
 
+  const updateCanvasSize = useCallback(() => {
+    if (canvasRef.current !== null) {
+      canvasRef.current.width =
+        canvasRef.current.offsetWidth * devicePixelRatio;
+      canvasRef.current.height =
+        canvasRef.current.offsetHeight * devicePixelRatio;
+    }
+  }, []);
+
+  // Update on resize
   useEffect(() => {
     if (windowSize.height === undefined || windowSize.width === undefined) {
       return;
     }
+
     setTimeout(() => {
+      updateCanvasSize();
       const canvasWidth = canvasRef.current?.width || 0;
       const canvasHeight = canvasRef.current?.height || 0;
       canvasRef.current
         ?.getContext("2d")
         ?.clearRect(0, 0, canvasWidth, canvasHeight);
     }, 250);
-  }, [windowSize]);
+  }, [windowSize, updateCanvasSize]);
 
+  // Fix canvas size
+  useEffect(updateCanvasSize, [updateCanvasSize]);
+
+  // Draw only once
   useEffect(() => {
-    if (canvasRef.current !== null) {
-      canvasRef.current.width = canvasRef.current.offsetWidth;
-      canvasRef.current.height = canvasRef.current.offsetHeight;
+    if (canvasRef.current !== null && !isDrawing.current) {
       drawSpirograph(canvasRef.current.getContext("2d"));
+      isDrawing.current = true;
     }
   }, []);
 
