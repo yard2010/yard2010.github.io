@@ -7,8 +7,8 @@ import { Spirograph } from "../components/spirograph";
 
 const Hero = styled.div({
   display: "flex",
-  justifyContent: "center",
-  fontSize: "1.4em",
+  justifyContent: "start",
+  fontSize: "1.2em",
   paddingTop: 64,
   position: "relative",
   zIndex: 12321,
@@ -21,12 +21,8 @@ const HeroText = styled.div({
 
 const Tagline = styled.div({
   paddingTop: 20,
-  lineHeight: "1.4em",
+  lineHeight: "1.2em",
   opacity: 0.8,
-
-  strong: {
-    // textDecoration: "underline dashed #FF87CA",
-  },
 });
 
 const Background = styled.div({
@@ -45,7 +41,7 @@ const Links = styled.div({
 
 const HeadContainer = styled.div({
   paddingTop: 40,
-  fontFamily: "Yeseva One",
+  fontFamily: "Merriweather",
   "@media screen and (max-width: 600px)": {
     fontSize: 36,
   },

@@ -6,7 +6,7 @@ import Head from "next/head";
 
 const Wrapper = styled.div({
   margin: "0 auto",
-  padding: "0 16px",
+  paddingLeft: 88,
 });
 
 const Footer = styled.div({});
@@ -14,9 +14,13 @@ const Footer = styled.div({});
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
-    <Head>
-      <script src="https://kit.fontawesome.com/e03c220e39.js" crossOrigin="anonymous" async></script>
-    </Head>
+      <Head>
+        <script
+          src="https://kit.fontawesome.com/e03c220e39.js"
+          crossOrigin="anonymous"
+          async
+        ></script>
+      </Head>
       <Wrapper>
         <Component {...pageProps} />
         <Footer></Footer>
