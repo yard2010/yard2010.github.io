@@ -77,6 +77,12 @@ const HeadContainer = styled.div({
 });
 
 const Home: NextPage = () => {
+  const handleContactClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    const email = atob("eWFyZDIwMTBAZ21haWwuY29t");
+    window.location.href = "mai" + "lt" + "o:" + email;
+  };
+
   return (
     <>
       <Background>
@@ -100,7 +106,7 @@ const Home: NextPage = () => {
             <strong>pixel-perfect design</strong>, <strong>teamwork</strong>,
             and <strong>bleeding-edge technology</strong>.
             <br />
-            <ContactButton href="mailto:yard2010@gmail.com">
+            <ContactButton href="#" onClick={handleContactClick}>
               Let&apos;s talk
             </ContactButton>
             <Links>
