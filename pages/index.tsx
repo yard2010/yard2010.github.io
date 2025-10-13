@@ -1,8 +1,6 @@
 import styled from "@emotion/styled";
 import type { NextPage } from "next";
 import Head from "next/head";
-
-import Image from "next/image";
 import { Spirograph } from "../components/spirograph";
 
 const Hero = styled.div({
@@ -37,6 +35,31 @@ const Links = styled.div({
   display: "flex",
   gap: 16,
   fontSize: "120%",
+  paddingTop: 8,
+});
+
+const ContactButton = styled.a({
+  display: "inline-block",
+  marginTop: 32,
+  marginBottom: 24,
+  padding: "16px 32px",
+  fontWeight: "bold",
+  color: "#fff",
+  backgroundColor: "rgba(100, 100, 255, 0.8)",
+  border: "2px solid rgba(150, 150, 255, 0.6)",
+  borderRadius: 8,
+  textDecoration: "none",
+  transition: "all 0.15s ease",
+  cursor: "pointer",
+  "&:hover": {
+    backgroundColor: "rgba(120, 120, 255, 0.9)",
+    borderColor: "rgba(180, 180, 255, 0.8)",
+    transform: "translateY(-1px)",
+    boxShadow: "0 4px 12px rgba(100, 100, 255, 0.3)",
+  },
+  "&:active": {
+    transform: "translateY(0)",
+  },
 });
 
 const HeadContainer = styled.div({
@@ -77,7 +100,9 @@ const Home: NextPage = () => {
             <strong>pixel-perfect design</strong>, <strong>teamwork</strong>,
             and <strong>bleeding-edge technology</strong>.
             <br />
-            <br />
+            <ContactButton href="mailto:yard2010@gmail.com">
+              Let&apos;s talk
+            </ContactButton>
             <Links>
               <a href="https://github.com/yard2010">
                 <i className="fa-brands fa-github-alt"></i>
